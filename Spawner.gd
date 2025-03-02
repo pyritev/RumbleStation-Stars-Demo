@@ -28,16 +28,16 @@ func do_spawn(pos := Vector2.ZERO, initial_screen_size := get_viewport().get_vis
 			new_particle.initial_position.y = self.position.y - randi_range(0, screen_size.y)
 			new_particle.initial_position.x = randi_range(0, screen_size.x)
 		elif behavior == "medium_45" || behavior == "xmedium_45" || behavior == "large_45_tilted": # stars that come from the left of the screen
-			new_particle.initial_position.y = randi_range(0, screen_size.y)
-			new_particle.initial_position.x = randi_range(-screen_size.x, -screen_size.x + (screen_size.x))
+			new_particle.initial_position.y = -randi_range(16, screen_size.y)
+			new_particle.initial_position.x = randi_range(-screen_size.x, screen_size.x/1.25)
 		else: # stars that come from the right of the screen
-			new_particle.initial_position.y = randi_range(0, screen_size.y)
-			new_particle.initial_position.x = randi_range(screen_size.x, screen_size.x + (screen_size.x/2))
+			new_particle.initial_position.y = -randi_range(16, screen_size.y)
+			new_particle.initial_position.x = randi_range(screen_size.x/1.25, screen_size.x * 2)
 	else: # respawn behavior: retaion original x position but spawn at the top of the screen (this works don't worry about it)
 		new_particle.initial_position.x = pos.x
 		new_particle.initial_position.y = -16
 	# evil and intimidating ternary statement to determine angle
-	new_particle.angle = 90 if ["small", "medium", "large"].has(behavior) else randi_range(41, 50) if ["medium_45", "large_45_tilted", "xmedium_45"].has(behavior) else randi_range(135, 145)
+	new_particle.angle = 90 if ["small", "medium", "large"].has(behavior) else randi_range(40, 80) if ["medium_45", "large_45_tilted", "xmedium_45"].has(behavior) else randi_range(105, 145)
 	# speed is vibes based
 	new_particle.speed = speed if behavior == "small" else speed * 3
 	# save screen size to star
