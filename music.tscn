@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmtgl30mbmdj5"]
+
+[ext_resource type="AudioStream" uid="uid://dcdb6gbeskhh4" path="res://minuet.ogg" id="1_fkg22"]
+[ext_resource type="Script" path="res://music.gd" id="1_xjn63"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_xjn63")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_fkg22")
